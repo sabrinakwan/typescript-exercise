@@ -11,41 +11,9 @@
  */
 const uuid = require('uuid');
 import { Icons, LinkIconsService } from './services/link-reveal-service/icons-service';
-// const axios = require ('axios');
-// import { AxiosPromise } from "axios";
+import { Proxy, HpidLoginProxyService } from './services/link-reveal-service/hpid-login-service';
 
-// interface Icon {
-//     id: string,
-//     something: string,
-//     name: string,
-//     URL: string,
-//     clientId: string
-// }
 
-// interface IconItems extends Array<Icon> {}
-
-// interface Icons {
-//     version: number,
-//     icons: IconItems
-// }
-
-// function getIcons(): AxiosPromise<Icons> {
-//     return axios.get('https://mylinks.linkcreationstudio.com/icons');
-// }
-
-// // const response: AxiosPromise = axios.get('https://mylinks.linkcreationstudio.com/icons', {
-    
-// // });
-
-// const promise = getIcons();
-
-// promise.then(response => {
-//     // console.log(response.data);
-//     const list: Icons = response.data;
-//     console.log(list.version);
-//     console.log(list.icons[0]);
-// })
-// const icons = await LinkIconsService.getIcons();
 LinkIconsService.getIcons().then(
     (list: Icons) => {
         if (list == null) {
@@ -56,4 +24,11 @@ LinkIconsService.getIcons().then(
         }
     }
 );
+
+HpidLoginProxyService.getProxyLinks().then(
+  (proxy: Proxy) => {
+      console.log("Proxy sign in url: " + proxy.sign_in_url);
+  }
+);
+
 console.log(uuid.v4());

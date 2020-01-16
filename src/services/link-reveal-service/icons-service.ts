@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios-jsonp-pro');
 import { AxiosPromise } from "axios";
 
 interface Icon {
